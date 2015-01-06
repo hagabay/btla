@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns   = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "btla"
+        versionCode = "10" 
+        version     = "1.0.0" >
+
+   
+    <name>btla</name>
+	<preference name="phonegap-version" value="3.6.3" />
+    <description>
+        ראשונית. 
+    </description>
+
+    <author href="https://netheme.com" email="hagabay@gmail.com">
+        motti reich 
+    </author>
+	<preference name="target-device" value="handset" />
+	<preference name="orientation" value="portrait" />
+	<content src="index.html" />
+    <feature name="App">
+        <param name="android-package" value="org.apache.cordova.App" />
+    </feature>
+    <feature name="Vibration">
+        <param name="android-package" value="org.apache.cordova.vibration.Vibration" />
+    </feature>
+    <feature name="Notification">
+        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+    </feature>
+    <access origin="*" />
+
+	<gap:plugin name="com.adobe.plugins.gaplugin" />
+
+</widget>
+
+
