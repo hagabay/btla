@@ -6,7 +6,7 @@ $( document ).ready(function() {
         
       $.ajax({
           dataType: 'jsonp',
-          data: null,
+          data: {phone:$("#phone").val()},
           jsonp: 'jsonCallback',
           url: 'http://www.artech.org.il/index.php?option=com_btla_boss&tmpl=component&view=jobsitems&layout=users',
           success: function (response) {
