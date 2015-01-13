@@ -2,15 +2,15 @@ $( document ).ready(function() {
     // 
    // $this->response->setHeader('Access-Control-Allow-Origin', '*');
     $("#submit-phone").click(function(){
-        //$("#login").hide();
+        $("#login").hide();
         
       $.ajax({
-          dataType: 'json',
+          dataType: 'jsonp',
           data: null,
-         
-          url: 'http://www.artech.org.il/?option=com_ajax&plugin=session&format=json',
+          jsonp: 'jsonCallback',
+          url: 'http://www.artech.org.il/index.php?option=com_btla_boss&tmpl=component&view=jobsitems&layout=users',
           success: function (response) {
-            alert(response.text)
+              $("#users").html(JSON.stringify(response, null, 2));
           },
         });
           
