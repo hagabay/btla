@@ -28,7 +28,7 @@
         <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
     </feature>
     <access origin="*" />
-
+    
 	<gap:plugin name="com.adobe.plugins.gaplugin" />
 
 </widget>
