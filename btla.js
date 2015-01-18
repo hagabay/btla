@@ -50,7 +50,8 @@ $( document ).ready(function() {
       //  alert("submit");
         var data = $("#form2").serialize();
        // alert(data);
-        $.post("http://www.artech.org.il/index.php?option=com_btla_tracing&task=boss.save&tmpl=component",data,function(d){  $("#sendForm").hide()},'jsonp');
+        $.post("http://www.artech.org.il/index.php?option=com_btla_tracing&task=boss.save&tmpl=component",data,function(d){  $("#sendForm").hide(); 
+                                                                                                                          $("#thanks").show();},'jsonp');
         
     });
  });
