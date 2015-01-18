@@ -11,9 +11,11 @@
         <form id="login">
               <div class="title"><h2>כניסת מעסיקים</h2></div>
             <p>הכנס את מספר הטלפון הנייד שלך</p>
+            <fieldset id="form1">
+            <div id="phoneimg"><img src="images/phone.png" /></div>
             <input type="tel" name="phone" id="phone" />
             <input type="button" id="submit-phone" value="שלח" />
-        
+        </fieldset>
         </form>
         <div >
             <ul id="users"></ul>
@@ -21,9 +23,12 @@
         <div id="sendForm" style="display:none;">
             <form id="form2" enctype="multipart/form-data">
                
-                
+                <fieldset>
+                    <p>שלח הודעה לתומך</p>
+                    
                  <textarea name="jform[bossmassage]" ></textarea>
                  <input type="button" id="submit-form" value="שלח" />
+                </fieldset>
                 </form>
         </div>
     </body>
