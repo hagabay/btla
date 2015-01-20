@@ -2,7 +2,7 @@ $( document ).ready(function() {
     // 
    // $this->response->setHeader('Access-Control-Allow-Origin', '*');
     $("#submit-phone").click(function(){
-      $("#login").hide();
+     
         
       $.ajax({
           dataType: 'jsonp',
@@ -10,6 +10,7 @@ $( document ).ready(function() {
           jsonp: 'jsonCallback',
           url: 'http://www.artech.org.il/index.php?option=com_btla_boss&tmpl=component&view=jobsitems&layout=users',
           success: function (response) {
+               $("#login").hide();
               //$("#users").html(JSON.stringify(response, null, 2));
             //  $.parseJSON(JSON.stringify(response, null, 2));
                var obj = $.parseJSON( JSON.stringify(response, null, 2) );
