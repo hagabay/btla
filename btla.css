@@ -88,10 +88,13 @@ ul#users li {
 }
 
 ul#users li a {
-    color: #253653;
-    text-decoration: none;
-    font-size: 1.1em;
-    font-weight: bold;
+color: #253653;
+text-decoration: none;
+font-size: 1.1em;
+font-weight: bold;
+width: 100%;
+height: 100%;
+display: block;
 }
 
 ul#users li:hover,  ul#users li:focus {
