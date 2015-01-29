@@ -23,7 +23,8 @@ $( document ).ready(function() {
                    // alert();
                    window.localStorage.setItem("secCode",secCode );  
                   $("#autentication").hide(); 
-                     //  location.reload(); 
+                          window.localStorage.setItem("phone", $("#phone").val());
+                       location.reload(); 
                 }
           }});
         
