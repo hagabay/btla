@@ -2,10 +2,12 @@ var messages = '';
 
 $( document ).ready(function() {
     // 
+    if(localStorage.getItem("phone"))
+        $("#phone").val(localStorage.getItem("phone"));
    // $this->response->setHeader('Access-Control-Allow-Origin', '*');
     $("#submit-phone").click(function(){
-     
-        
+     if($("#phone").val())
+        localStorage.setItem("phone", $("#phone").val());
       $.ajax({
           dataType: 'jsonp',
           data: {phone:$("#phone").val()},
@@ -17,38 +19,42 @@ $( document ).ready(function() {
             //  $.parseJSON(JSON.stringify(response, null, 2));
                var obj = $.parseJSON( JSON.stringify(response, null, 2) );
              // alert( obj.data );
-              if(!obj.data.users){
-                alert("phone error");
+              if(obj.data.error){
+                alert(obj.data.error);
+                   $("#login").show();
               }
-              messages = obj.data.messages;
+              else{
+                  
+                  messages = obj.data.messages;
               
-              $.each(obj.data.users, function(i, item) {
-                   var temp = '';
-                    $.each(item, function(j, val) {
-                        temp += 'data-'+j+'="'+val+'" ';
-                    });
-                     $("#users").append('<li><a class="selecteduser" href="#" id="bosid-'+item.bosid+'" '+temp+'>'+item.username+"</li>");   
-                    
-                });
-               $("li a[id^='bosid']").click(function(){
-                        $("#users").hide();
-                        $("#sendForm").show();
-                       
-                        $.each(messages, function(i, message){
-                            $("#message-type").append('<option value="'+message+'">'+message+'</option>');
+                  $.each(obj.data.users, function(i, item) {
+                       var temp = '';
+                        $.each(item, function(j, val) {
+                            temp += 'data-'+j+'="'+val+'" ';
                         });
-                       $.each(this.attributes, function(i, attrib){
-                             var name = attrib.name;
-                             var value = attrib.value;
-                           
-                           if(name.indexOf("data")==0)
-                               $("#form2").append('<input type="hidden" name="jform['+name+']" value="'+value+'" />');
-                          });
-                   var header = "<h2>"+$(this).attr("data-username")+'</h2>';
-                   header += '<div class="tomech">'+$(this).attr("data-ttitle")+' '+$(this).attr("data-mentorname")+'<span>'+$(this).attr("data-ptitle")+' <a href="tel:'+$(this).attr("data-mentorphone")+'">'+$(this).attr("data-mentorphone")+'</a></span></div>';
-                    $("#sendForm").prepend(header);
-                    $("#form2").append('<input type="hidden" name="'+obj.message+'" value="1" />');
-                });
+                         $("#users").append('<li><a class="selecteduser" href="#" id="bosid-'+item.bosid+'" '+temp+'>'+item.username+"</li>");   
+
+                    });
+                   $("li a[id^='bosid']").click(function(){
+                            $("#users").hide();
+                            $("#sendForm").show();
+
+                            $.each(messages, function(i, message){
+                                $("#message-type").append('<option value="'+message+'">'+message+'</option>');
+                            });
+                           $.each(this.attributes, function(i, attrib){
+                                 var name = attrib.name;
+                                 var value = attrib.value;
+
+                               if(name.indexOf("data")==0)
+                                   $("#form2").append('<input type="hidden" name="jform['+name+']" value="'+value+'" />');
+                              });
+                       var header = "<h2>"+$(this).attr("data-username")+'</h2>';
+                       header += '<div class="tomech">'+$(this).attr("data-ttitle")+' '+$(this).attr("data-mentorname")+'<span>'+$(this).attr("data-ptitle")+' <a href="tel:'+$(this).attr("data-mentorphone")+'">'+$(this).attr("data-mentorphone")+'</a></span></div>';
+                        $("#sendForm").prepend(header);
+                        $("#form2").append('<input type="hidden" name="'+obj.message+'" value="1" />');
+                    });
+              }
           } //success
           
 

@@ -133,3 +133,9 @@ text-align: right;
 font-size: 0.98em;
 margin-bottom: 5px;
 }
+select#message-type {
+width: 100%;
+margin: 10px 0;
+/* line-height: 1.2em; */
+/* text-align: center; */
+}
