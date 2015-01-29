@@ -1,4 +1,4 @@
-vat messages = '';
+var messages = '';
 
 $( document ).ready(function() {
     // 
