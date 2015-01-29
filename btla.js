@@ -17,7 +17,11 @@ $( document ).ready(function() {
             //  $.parseJSON(JSON.stringify(response, null, 2));
                var obj = $.parseJSON( JSON.stringify(response, null, 2) );
              // alert( obj.data );
+              if(!obj.data.users){
+                alert("phone error");
+              }
               messages = obj.data.messages;
+              
               $.each(obj.data.users, function(i, item) {
                    var temp = '';
                     $.each(item, function(j, val) {
@@ -29,7 +33,10 @@ $( document ).ready(function() {
                $("li a[id^='bosid']").click(function(){
                         $("#users").hide();
                         $("#sendForm").show();
-                        $("#sendForm").append(messages);
+                       
+                        $.each(messages, function(i, message){
+                            $("#message-type").append('<option value="'+message+'">'+message+'</option>');
+                        }
                        $.each(this.attributes, function(i, attrib){
                              var name = attrib.name;
                              var value = attrib.value;
