@@ -28,7 +28,7 @@ p {
     text-align: center;
 }
 
-input#phone {
+input#phone, input#sec-code {
 margin: 0 auto;
 /* display: block; */
 margin: 5px 0 10px;
@@ -138,4 +138,7 @@ width: 100%;
 margin: 10px 0;
 /* line-height: 1.2em; */
 /* text-align: center; */
+}
+h3 {
+margin: 0;
 }

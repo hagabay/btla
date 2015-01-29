@@ -1,23 +1,57 @@
 var messages = '';
 var secCode = false;
+var phone;
+
 
 
 $( document ).ready(function() {
-    if( window.localStorage.getItem("securityCode"))
-        secCode = window.localStorage.getItem("securityCode");
-    var phone = window.localStorage.getItem("phone"); 
+    if( window.localStorage.getItem("secCode"))
+        secCode = window.localStorage.getItem("secCode");
+    phone = window.localStorage.getItem("phone"); 
     if(phone)
         $("#phone").val(phone);
+    $("#submit-autentication").click(function(){
+        var datak = $("#login,#autentication").serialize();
+        var secCode = $("#sec-code").val();
+        $.ajax({
+          dataType: 'jsonp',
+          data: datak,
+          jsonp: 'jsonCallback',
+          url: 'http://www.artech.org.il/index.php?option=com_btla_boss&task=bossitems.sec&tmpl=component',
+          success: function (response) {
+                   if(response.data.acc == "1"){
+                   // alert();
+                   window.localStorage.setItem("secCode",secCode );  
+                  $("#autentication").hide(); 
+                       location.reload(); 
+                }
+          }});
+        
+        
+          
+          /*   
+            */
+        
+            
+    });
    // $this->response->setHeader('Access-Control-Allow-Origin', '*');
     $("#submit-phone").click(function(){
+     if(window.localStorage.getItem("phone") != $("#phone").val()){
+         window.localStorage.removeItem("secCode");
+         secCode = false;
+         
+     }
+         
      if(!secCode){
         $("#autentication").show();
         var data = $("#login").serialize();
-        $.post("http://www.artech.org.il/index.php?option=com_btla_tracing&task=boss.sms&tmpl=component",data,function(d){  },'jsonp');
+        $.post("http://www.artech.org.il/index.php?option=com_btla_boss&task=bossitems.sms&tmpl=component",data,function(d){  },'jsonp');
      }
-    else
+    
+    else{
      if($("#phone").val())
        window.localStorage.setItem("phone", $("#phone").val());
+    
       $.ajax({
           dataType: 'jsonp',
           data: {phone:$("#phone").val()},
@@ -42,8 +76,9 @@ $( document ).ready(function() {
                         $.each(item, function(j, val) {
                             temp += 'data-'+j+'="'+val+'" ';
                         });
+                        temp+= 'data-bossphone="'+phone+'"';
                          $("#users").append('<li><a class="selecteduser" href="#" id="bosid-'+item.bosid+'" '+temp+'>'+item.username+"</li>");   
-
+                        $("#step2").show();
                     });
                    $("li a[id^='bosid']").click(function(){
                             $("#users").hide();
@@ -71,7 +106,7 @@ $( document ).ready(function() {
          
         }); //ajax
 
-        
+    }  
      
     }); //submit phone
     
@@ -81,6 +116,14 @@ $( document ).ready(function() {
        // alert(data);
         $.post("http://www.artech.org.il/index.php?option=com_btla_tracing&task=boss.save&tmpl=component",data,function(d){  $("#sendForm").hide(); 
                                                                                                                           $("#thanks").show();},'jsonp');
+        
+    });
+    $("#ineedworkers").click(function(){
+      //  alert("submit");
+       var data = $("#form2").serialize();
+       // alert(data);
+        
+        $.post("http://www.artech.org.il/index.php?option=com_btla_tracing&task=boss.ineedworkers&tmpl=component&phone="+phone,data,function(d){                                                                                                                            $("#thanks").show();},'jsonp');
         
     });
  });

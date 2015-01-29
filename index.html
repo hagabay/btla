@@ -20,24 +20,26 @@
             <input type="button" id="submit-phone" value="שלח" />
         </fieldset>
         </form>
-        <div id="autentication" style="display:none">
+        <form id="autentication" style="display:none">
               <div class="title"><h3>אימות מספר טלפון</h3></div>
             <p> הכנס את קוד האימות שהתקבל בסמס</p>
             <fieldset id="form1">
             <div id="phoneimg"></div>
-            <input type="tel" name="autentication" id="phone" />
+            <input type="tel" name="autentication" id="sec-code" />
             <input type="button" id="submit-autentication" value="שלח" />
         </fieldset>
         </form>
-        <div >
+        <div id="step2" style="display:none" >
             <ul id="users"></ul>
+            <a class="ineedworkers" href="#" id="ineedworkers" >דרוש לי עובד, אשמח שתיצרו קשר</a>
+           
         </div>
         <div id="sendForm" style="display:none;">
             <form id="form2" enctype="multipart/form-data">
                
                 <fieldset>
                     <p>שלח הודעה לתומך</p>
-                <select name="message-type" id="message-type">
+                <select name="jform[message-type]" id="message-type">
                     </select>
                  <textarea name="jform[bossmassage]" ></textarea>
                  <input type="button" id="submit-form" value="שלח" />
