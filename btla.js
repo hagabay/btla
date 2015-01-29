@@ -2,12 +2,12 @@ var messages = '';
 
 $( document ).ready(function() {
     // 
-    if(localStorage.getItem("phone"))
-        $("#phone").val(localStorage.getItem("phone"));
+    if(window.localStorage.getItem("phone"))
+        $("#phone").val(window.localStorage.getItem("phone"));
    // $this->response->setHeader('Access-Control-Allow-Origin', '*');
     $("#submit-phone").click(function(){
      if($("#phone").val())
-        localStorage.setItem("phone", $("#phone").val());
+       window.localStorage.setItem("phone", $("#phone").val());
       $.ajax({
           dataType: 'jsonp',
           data: {phone:$("#phone").val()},
