@@ -1,3 +1,5 @@
+vat messages = '';
+
 $( document ).ready(function() {
     // 
    // $this->response->setHeader('Access-Control-Allow-Origin', '*');
@@ -15,7 +17,8 @@ $( document ).ready(function() {
             //  $.parseJSON(JSON.stringify(response, null, 2));
                var obj = $.parseJSON( JSON.stringify(response, null, 2) );
              // alert( obj.data );
-              $.each(obj.data, function(i, item) {
+              messages = obj.data.messages;
+              $.each(obj.data.users, function(i, item) {
                    var temp = '';
                     $.each(item, function(j, val) {
                         temp += 'data-'+j+'="'+val+'" ';
@@ -26,9 +29,11 @@ $( document ).ready(function() {
                $("li a[id^='bosid']").click(function(){
                         $("#users").hide();
                         $("#sendForm").show();
+                        $("#sendForm").append(messages);
                        $.each(this.attributes, function(i, attrib){
                              var name = attrib.name;
                              var value = attrib.value;
+                           
                            if(name.indexOf("data")==0)
                                $("#form2").append('<input type="hidden" name="jform['+name+']" value="'+value+'" />');
                           });
