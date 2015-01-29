@@ -84,7 +84,7 @@ $( document ).ready(function() {
                    $("li a[id^='bosid']").click(function(){
                             $("#users").hide();
                             $("#sendForm").show();
-
+                             $("#step2").hide();
                             $.each(messages, function(i, message){
                                 $("#message-type").append('<option value="'+message+'">'+message+'</option>');
                             });
@@ -124,7 +124,7 @@ $( document ).ready(function() {
        var data = $("#form2").serialize();
        // alert(data);
         
-        $.post("http://www.artech.org.il/index.php?option=com_btla_tracing&task=boss.ineedworkers&tmpl=component&phone="+phone,data,function(d){                                                                                                                            $("#thanks").show();},'jsonp');
+        $.post("http://www.artech.org.il/index.php?option=com_btla_tracing&task=boss.ineedworkers&tmpl=component&phone="+phone,data,function(d){                                                                                                                       $("#step2").hide();       $("#thanks").show();},'jsonp');
         
     });
  });
