@@ -54,7 +54,7 @@ fieldset {
     text-align: right;
 }
 fieldset#form1{width: 220px;}
-input#submit-phone, input#submit-form {
+input#submit-phone, input#submit-form, input#submit-autentication {
     float: left;
     background: #c5dfb8;
     padding: 3px 10px;

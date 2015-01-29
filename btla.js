@@ -1,9 +1,11 @@
 var messages = '';
-var secCode = window.localStorage.getItem("securityCode");
-var phone = window.localStorage.getItem("phone");
+var secCode = false;
+
 
 $( document ).ready(function() {
-    // 
+    if( window.localStorage.getItem("securityCode"))
+        secCode = window.localStorage.getItem("securityCode");
+    var phone = window.localStorage.getItem("phone"); 
     if(phone)
         $("#phone").val(phone);
    // $this->response->setHeader('Access-Control-Allow-Origin', '*');
@@ -13,7 +15,7 @@ $( document ).ready(function() {
         var data = $("#login").serialize();
         $.post("http://www.artech.org.il/index.php?option=com_btla_tracing&task=boss.sms&tmpl=component",data,function(d){  },'jsonp');
      }
-    
+    else
      if($("#phone").val())
        window.localStorage.setItem("phone", $("#phone").val());
       $.ajax({
