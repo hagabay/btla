@@ -36,7 +36,7 @@ $( document ).ready(function() {
                        
                         $.each(messages, function(i, message){
                             $("#message-type").append('<option value="'+message+'">'+message+'</option>');
-                        }
+                        });
                        $.each(this.attributes, function(i, attrib){
                              var name = attrib.name;
                              var value = attrib.value;
