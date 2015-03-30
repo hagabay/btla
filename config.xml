@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <widget xmlns   = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
-        id          = "btla"
+        id          = "ARContact"
         versionCode = "10" 
         version     = "1.0.0" >
 
    
-    <name>btla</name>
+    <name>ARContact</name>
 	<preference name="phonegap-version" value="3.6.3" />
     <description>
-        ראשונית. 
+        . 
     </description>
 
     <author href="https://netheme.com" email="hagabay@gmail.com">
